@@ -1,0 +1,189 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Doador</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f7fa;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .register-wrapper {
+      max-width: 700px;
+      margin: auto;
+      padding: 50px 40px;
+      background-color: #fff;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    h2.title {
+      text-align: center;
+      color: #c62828;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    label, .name {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .input-group .form-control,
+    .input-group .input--style-5 {
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+
+    .form-row {
+      margin-bottom: 20px;
+    }
+
+    .btn-danger {
+      background-color: #c62828;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-danger:hover {
+      background-color: #e53935;
+      box-shadow: 0 6px 15px rgba(229, 57, 53, 0.4);
+    }
+
+    .text-center a {
+      color: #c62828;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "blood/navbar.html" %}
+
+  <div class="register-wrapper">
+    <h2 class="title">Cadastro de Doador</h2>
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-row">
+        <div class="name">Primeiro Nome</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="Digite seu primeiro nome" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Último Nome</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Digite seu sobrenome" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Nome do usuário</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="Digite um nome de usuário" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Senha</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="Crie uma senha" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Grupo Sanguíneo</div>
+        <div class="value">
+          <div class="input-group">
+            <select name="bloodgroup" class="form-control" required>
+              <option disabled selected>Selecione</option>
+              <option>O+</option>
+              <option>O-</option>
+              <option>A+</option>
+              <option>A-</option>
+              <option>B+</option>
+              <option>B-</option>
+              <option>AB+</option>
+              <option>AB-</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Endereço</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field donorForm.address|attr:'required:true' class="form-control" placeholder="Digite seu endereço" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Contacto</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field donorForm.mobile|attr:'required:true' class="form-control" placeholder="Digite seu telefone" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="name">Foto</div>
+        <div class="value">
+          <div class="input-group">
+            {% render_field donorForm.profile_pic|attr:'required:true' class="form-control-file" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-danger btn-block">Cadastrar</button>
+      </div>
+    </form>
+
+    <div class="text-center mt-3">
+      <p>Já tem uma conta? <a href="/donor/donorlogin">Faça login</a></p>
+    </div>
+  </div>
+
+  {% include "blood/footer.html" %}
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'blood/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<br><br>
+<div class="container">
+    {% if requests %}
+    <H4 class="text-center">Sangue Solicitado</H4><br>
+    {% if message %}
+   <h5 class="text-center" style="color: red;"> {{message}}</h5><br>
+{% else %}
+
+{% endif %}
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-dark">
+            <tr>
+                <th scope="col" style="color: rgb(192, 192, 192);">Nome do Paciente</th>
+                <th scope="col" style="color: rgb(192, 192, 192);">Idade</th>
+                
+                <th scope="col" style="color: rgb(192, 192, 192);">Motivo</th>
+                <th scope="col" style="color: rgb(192, 192, 192);">Grupo Sanguíneo</th>
+                <th scope="col" style="color: rgb(192, 192, 192);">Unidade (ml)</th>
+                <th scope="col" style="color: rgb(192, 192, 192);">Data</th>
+                <th scope="col" style="color: rgb(192, 192, 192);">Estado</th>
+                <th style="color: rgb(192, 192, 192);">Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in requests %}
+            <tr>
+                <td> {{t.patient_name}}</td>
+                <td>{{t.patient_age}}</td>
+                
+                
+                <td>{{t.reason}}</td>
+                <td>{{t.bloodgroup}}</td>
+                <td>{{t.unit}}</td>
+                <td>{{t.date}}</td>
+                <td>{{t.status}}</td>
+                
+                
+                <td>
+                   
+                    <button class="btn btn-success btn-sm"><a  style="text-decoration: none;color: white;" href="{% url 'update-approve-status' t.id  %}"><i class="fa fa-check"></i> Aprovar</a> </button>
+                    <button class="btn btn-danger btn-sm"><a  style="text-decoration: none;color: white;" href="{% url 'update-reject-status' t.id  %}"><i class="fa fa-times"></i> Rejeitar</a> </button>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+{% else %}
+<div class="alert alert-danger" role="alert">
+    Nenhuma Solicitação de Sangue pelo Paciente/Doador!
+  </div>
+
+{% endif %}
+
+</div>
+
+
+{% endblock content %}

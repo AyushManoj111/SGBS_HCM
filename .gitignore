@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+*.env
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Django static and media
+/staticfiles/
+/media/
+
+# Environment variables
+.env
+
+# Migrations (optional: keep if you want versioned DB structure)
+**/migrations/*.py
+**/migrations/__pycache__/
+
+# Compiled files
+*.egg-info/
+*.egg/
+*.bak
+
+# Pytest / test cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Pip
+pip-wheel-metadata/
+
+# Node (if using npm/yarn for frontend)
+node_modules/

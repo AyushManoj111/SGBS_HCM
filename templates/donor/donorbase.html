@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DOADOR</title>
+
+    <!-- Bootstrap 4.3.1 CSS para manter compatibilidade com o estilo original -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css" />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f5f9;
+        }
+
+        /* Navbar estilizada conforme o primeiro código */
+        .navbar {
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 1.5rem;
+        }
+
+        .navbar-brand {
+            font-size: 20px;
+            color: #dc3545 !important;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #495057 !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #dc3545 !important;
+            transform: scale(1.05);
+        }
+
+        .navbar-nav .nav-link i {
+            margin-left: 5px;
+        }
+
+        .navbar-toggler {
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2850,50,50, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        /* Sidebar e outras estilizações */
+        .row {
+            padding: 5px;
+        }
+
+        .fa-tint {
+            color: #d41010;
+        }
+
+        .blood {
+            float: right;
+        }
+
+        .fa-users,
+        .fa-spinner,
+        .fa-check-circle,
+        .xyz {
+            color: blue;
+            font-size: 3ex;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .bg-danger {
+            background-color: #c32d22 !important;
+        }
+
+        .wrapper {
+            display: flex;
+            position: relative;
+        }
+
+        .wrapper .sidebar {
+            width: 200px;
+            height: 100%;
+            background: #343a40;
+            padding: 30px 0px;
+            position: fixed;
+        }
+
+        .wrapper .sidebar h2 {
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .wrapper .sidebar ul li {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .wrapper .sidebar ul li a {
+            color: #dedede;
+            display: block;
+            text-decoration: none;
+        }
+
+        .wrapper .sidebar ul li a .fas {
+            width: 25px;
+        }
+
+        .wrapper .sidebar ul li:hover {
+            background-color: #7a7a7a;
+        }
+
+        .wrapper .sidebar ul li:hover a {
+            color: #fff;
+        }
+
+        .wrapper .sidebar .social_media {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .wrapper .sidebar .social_media a {
+            display: block;
+            width: 40px;
+            background: #594f8d;
+            height: 40px;
+            line-height: 45px;
+            text-align: center;
+            margin: 0 5px;
+            color: #dedede;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .wrapper .main_content {
+            width: 100%;
+            margin-left: 200px;
+        }
+
+        .wrapper .main_content .header {
+            padding: 20px;
+            background: #fff;
+            color: #717171;
+            border-bottom: 1px solid #e0e4e8;
+        }
+
+        .wrapper .main_content .info {
+            margin: 20px;
+            color: #717171;
+            line-height: 25px;
+        }
+
+        .wrapper .main_content .info div {
+            margin-bottom: 20px;
+        }
+
+        @media (max-height: 500px) {
+            .social_media {
+                display: none !important;
+            }
+        }
+
+        .fa-sign-out-alt {
+            color: white;
+            font-size: 2ex;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
+        <a href="/" class="navbar-brand">
+            <i class="fa fa-heartbeat"></i>&nbsp; Sistema de Gestão de Banco de Sangue para HCM
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">
+                        Logout <i class="fas fa-power-off"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br /><br />
+
+    <div class="wrapper">
+        <div class="sidebar">
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i>Página Inicial</a></li>
+                <li><a href="/donor/donate-blood"><i class="fas fa-hand-holding-medical"></i>Doar Sangue</a></li>
+                <li><a href="/donor/donation-history"><i class="fas fa-history"></i>Histórico de Doações</a></li>
+            </ul>
+        </div>
+        <div class="main_content">
+
+            {% block content %}
+            {% endblock content %}
+
+        </div>
+    </div>
+
+    <!-- JS bootstrap e dependências (jQuery, Popper) compatíveis com 4.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

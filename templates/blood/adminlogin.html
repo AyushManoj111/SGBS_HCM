@@ -1,0 +1,113 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login do Administrador</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f5f7fa; /* fundo claro e profissional */
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .login-wrapper {
+      max-width: 500px;
+      margin: auto;
+      padding: 60px 40px;
+      background-color: #ffffff;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      margin-top: 100px;
+    }
+
+    .login-wrapper h2 {
+      text-align: center;
+      color: #b71c1c;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .input-group-text {
+      background-color: #f8d7da;
+      border: none;
+    }
+
+    .form-control {
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .btn-danger {
+      background-color: #b71c1c;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .btn-danger:hover {
+      background-color: #d32f2f;
+      box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4);
+    }
+
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  {% include "blood/navbar.html" %}
+
+  <div class="login-wrapper">
+    <h2>Login do Administrador</h2>
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label>Nome do Usuário</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          {% render_field form.username class="form-control" placeholder="Digite seu nome de usuário" %}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Senha</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          </div>
+          {% render_field form.password class="form-control" placeholder="Digite sua senha" %}
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-danger btn-block">Entrar</button>
+      </div>
+    </form>
+  </div>
+
+  {% include "blood/footer.html" %}
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    crossorigin="anonymous"></script>
+</body>
+</html>
