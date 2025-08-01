@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'bloodbankmanagement.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'NAME': 'sgbs_hcm_db',
+        'USER': 'sgbs_hcm_db_user',
+        'PASSWORD': 'IrR96uaemy3uwPKShZkbdAZABEJzQBYP',
+        'HOST': 'dpg-d26fne6r433s739a79eg-a.oregon-postgres.render.com',  # só o host, sem 'postgresql://...' nem usuário ou senha
+        'PORT': '5432',
     }
 }
 
