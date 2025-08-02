@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -185,30 +186,33 @@
         }
     </style>
 </head>
-<body>
 
+<body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top">
         <a href="/" class="navbar-brand">
             <i class="fa fa-heartbeat"></i>&nbsp; Sistema de Gestão de Banco de Sangue para HCM
         </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
             <ul class="navbar-nav ml-auto">
-                <!-- Mantive só o logout, pode adicionar mais links se quiser -->
+                <!-- Logout form -->
                 <li class="nav-item">
-                    <a class="nav-link" href="/logout">
-                        Logout <i class="fas fa-power-off"></i>
-                    </a>
+                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link nav-link"
+                            style="padding: 0; border: none; background: none; cursor: pointer;">
+                            Logout <i class="fas fa-power-off"></i>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
     </nav>
-
     <br /><br />
 
     <div class="wrapper">
@@ -235,4 +239,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

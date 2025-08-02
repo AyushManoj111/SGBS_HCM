@@ -188,14 +188,17 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/logout">
-            Logout <i class="fas fa-power-off"></i>
-          </a>
+          <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link nav-link"
+              style="padding: 0; border: none; background: none; cursor: pointer;">
+              Logout <i class="fas fa-power-off"></i>
+            </button>
+          </form>
         </li>
       </ul>
     </div>
   </nav>
-
   <br /><br />
 
   <div class="wrapper">
